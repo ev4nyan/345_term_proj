@@ -1,0 +1,155 @@
+ENEMY TOWER ATTACK SYSTEM
+=========================
+
+OVERVIEW:
+---------
+Enemies now have two behaviors:
+1. Follow waypoints (default behavior)
+2. Detect and attack nearby towers (when tower is within range)
+
+FIXES INCLUDED:
+---------------
+✓ Fixed green sprite issue after tower placement
+✓ Enemies now attack towers instead of just following waypoints
+
+FILES MODIFIED/CREATED:
+-----------------------
+1. Enemy.cs - Added tower detection and attack behavior
+2. TowerHealth.cs - NEW: Health system for towers
+3. TowerDragHandler.cs - Fixed sprite color restoration
+
+SETUP INSTRUCTIONS:
+-------------------
+
+STEP 1: Tag Your Towers
+-----------------------
+1. Select your Tower prefab (e.g., Archer.prefab)
+2. In the Inspector, set Tag to "Tower"
+   - If "Tower" tag doesn't exist:
+     * Click Tag dropdown > "Add Tag..."
+     * Click the + button
+     * Type "Tower"
+     * Go back to your prefab and set the tag
+
+STEP 2: Add TowerHealth Component
+----------------------------------
+1. Select your Tower prefab
+2. Click "Add Component" in Inspector
+3. Search for "Tower Health" and add it
+4. Configure settings:
+   - Max Health: 200 (default, adjust as needed)
+   - Flash On Damage: Check this for visual feedback
+   - Damage Color: Red (color when taking damage)
+   - Flash Duration: 0.1 (how long the flash lasts)
+
+STEP 3: Configure Enemy Settings
+---------------------------------
+1. Select your Enemy prefab or enemy in scene
+2. Find the "Tower Attack" section in Enemy component:
+   - Tower Detection Range: 3 (how far enemy can detect towers)
+   - Attack Range: 1.5 (how close enemy needs to be to attack)
+   - Attack Damage: 10 (damage per attack)
+   - Attack Rate: 1 (attacks per second)
+   - Tower Tag: "Tower" (must match tower tag)
+
+STEP 4: Test the System
+------------------------
+1. Enter Play Mode
+2. Place a tower using drag & drop
+3. Spawn/place an enemy
+4. Observe:
+   - Enemy follows waypoints normally
+   - When enemy gets within detection range (yellow circle) of tower, it changes behavior
+   - Enemy moves toward tower
+   - When in attack range (red circle), enemy attacks tower
+   - Tower flashes red when taking damage
+   - Tower is destroyed when health reaches 0
+   - Enemy resumes following waypoints if tower is destroyed
+
+BEHAVIOR DETAILS:
+-----------------
+
+Enemy States:
+- FOLLOWING PATH: Default state, moves along waypoints
+- ATTACKING TOWER: Enemy detected tower in range, moving to attack it
+
+Detection System:
+- Scans for towers every frame within detection range
+- Targets closest tower in range
+- Switches back to path following if tower is destroyed or out of range
+
+Attack System:
+- Enemies move toward detected tower
+- Stop at attack range and deal damage periodically
+- Attack rate controls how often damage is dealt (attacks per second)
+
+Tower Health System:
+- Towers have max health and current health
+- Visual feedback (red flash) when taking damage
+- Automatically destroyed when health reaches 0
+- Unregisters from placement system on destruction
+
+CUSTOMIZATION:
+--------------
+
+Make Enemies More/Less Aggressive:
+- Increase Tower Detection Range for more aggressive enemies
+- Decrease for passive enemies that mostly follow path
+
+Adjust Difficulty:
+- Increase Attack Damage for harder enemies
+- Decrease Tower Max Health for more challenge
+- Increase Attack Rate for rapid attackers
+
+Visual Feedback:
+- Change Damage Color in TowerHealth for different effects
+- Increase Flash Duration for more noticeable damage
+- Add particles/sounds in TowerHealth.DestroyTower()
+
+Add Health Bars (Optional):
+- Create a UI Canvas above tower (World Space)
+- Add Image/Slider component
+- Update in TowerHealth.Update() based on GetHealthPercentage()
+
+DEBUGGING:
+----------
+
+Gizmos (visible when selected in editor):
+- Yellow sphere on enemy = Tower detection range
+- Red sphere on enemy = Attack range
+- Green circle on tower = Tower firing range
+- Cyan spheres in scene = Placed tower positions
+
+Console Logs:
+- "Tower took X damage. Health: Y/Z" when tower is hit
+- "Enemy attacking tower at (position)" if no health component
+- "Tower destroyed!" when tower health reaches 0
+
+Common Issues:
+- Enemy doesn't attack: Check tower has "Tower" tag
+- Tower doesn't take damage: Add TowerHealth component to tower prefab
+- Enemy follows path forever: Increase tower detection range
+- Enemy attacks from far away: Decrease attack range
+
+ADVANCED:
+---------
+
+Different Enemy Types:
+- Fast, weak attackers: High speed, low damage
+- Slow, strong attackers: Low speed, high damage, high detection range
+- Ranged enemies: Large attack range, low health
+
+Tower Repair:
+- Call towerHealth.Heal(amount) to repair towers
+- Create repair items or abilities
+
+Priority Targeting:
+- Modify DetectTowers() in Enemy.cs
+- Target low-health towers first
+- Target specific tower types
+
+Boss Enemies:
+- Very high health
+- Strong tower attack damage
+- Large detection range
+- Special abilities in AttackTower()

@@ -1,0 +1,131 @@
+TOWER DRAG AND DROP SETUP INSTRUCTIONS
+======================================
+
+This guide will help you set up the drag and drop tower placement system.
+
+FILES CREATED:
+--------------
+1. TowerDragHandler.cs - Handles dragging towers from UI to game world
+2. TowerPlacementManager.cs - Validates tower placement and manages positions
+3. TowerShopButton.cs - Optional UI script for tower shop buttons
+
+SETUP STEPS:
+------------
+
+STEP 1: Setup the Placement Manager
+------------------------------------
+1. Create an empty GameObject in your scene (Right-click in Hierarchy > Create Empty)
+2. Rename it to "TowerPlacementManager"
+3. Add the TowerPlacementManager.cs script to it
+4. Configure the settings:
+   - Min Distance Between Towers: Distance between towers (default: 2)
+   - Blocking Layers: Select layers that block placement (like "Path" or "Obstacles")
+   - Placement Check Radius: How large an area to check (default: 0.5)
+   - Use Restricted Area: Enable if you want to limit where towers can be placed
+   - Placement Bounds: If restricted, set the bounds (center and size)
+
+STEP 2: Setup the UI Canvas
+----------------------------
+1. If you don't have a Canvas, create one (Right-click in Hierarchy > UI > Canvas)
+2. Set the Canvas Render Mode to "Screen Space - Overlay" or "Screen Space - Camera"
+
+STEP 3: Create a Tower Button
+------------------------------
+1. In the Canvas, create a UI Button (Right-click on Canvas > UI > Button)
+2. Rename it to "TowerButton" or similar
+3. Add the TowerDragHandler.cs script to this button
+4. Configure TowerDragHandler:
+   - Tower Prefab: Drag your Archer prefab (or any tower prefab) here
+   - Drag Alpha: Transparency while dragging (default: 0.6)
+
+5. (Optional) Add TowerShopButton.cs for additional info:
+   - Tower Name: Display name
+   - Cost: Tower cost
+   - Tower Icon: Icon sprite
+   - Link UI text/image references if you have them
+
+STEP 4: Customize the Button Visuals
+------------------------------------
+1. Select the TowerButton
+2. Add an Image component if needed (or use the existing one)
+3. Set the sprite to show a tower icon
+4. You can add Text/TextMeshPro children to show name and cost
+
+STEP 5: Setup Layers (Important!)
+---------------------------------
+1. Go to Edit > Project Settings > Tags and Layers
+2. Create layers if needed:
+   - "Path" - for the enemy path
+   - "PlacementArea" - for valid placement zones (optional)
+   - "Obstacle" - for objects that block placement
+3. Assign these layers to your game objects
+4. In TowerPlacementManager, set "Blocking Layers" to include "Path" and "Obstacle"
+
+STEP 6: Test It!
+----------------
+1. Make sure your Tower prefab has:
+   - Tower.cs script
+   - SpriteRenderer component
+   - Collider2D (if needed for collision detection)
+
+2. Enter Play Mode
+3. Click and drag the tower button
+4. You should see:
+   - Semi-transparent tower following your mouse
+   - Green tint = valid placement
+   - Red tint = invalid placement
+5. Release mouse to place the tower
+
+ADVANCED CUSTOMIZATION:
+-----------------------
+
+Grid Snapping (Optional):
+- Modify TowerDragHandler.cs GetWorldPosition() to snap to grid:
+  worldPos.x = Mathf.Round(worldPos.x);
+  worldPos.y = Mathf.Round(worldPos.y);
+
+Cost System:
+- Implement a resource manager
+- Update TowerShopButton.CanAfford() and Purchase()
+- Check affordability in TowerDragHandler.OnBeginDrag()
+
+Multiple Tower Types:
+- Create multiple buttons, each with different Tower Prefab assigned
+
+Sell Towers:
+- Call TowerPlacementManager.Instance.UnregisterTowerPlacement(position)
+- Destroy the tower GameObject
+
+TROUBLESHOOTING:
+----------------
+
+Issue: Tower doesn't follow mouse
+Fix: Make sure you have a Camera tagged as "MainCamera"
+
+Issue: Can't place tower anywhere
+Fix: Check Blocking Layers in TowerPlacementManager - make sure relevant layers are selected
+
+Issue: Drag doesn't start
+Fix: Make sure the button has an Image component and "Raycast Target" is checked
+
+Issue: Tower is invisible
+Fix: Make sure your tower prefab has a SpriteRenderer with a sprite assigned
+
+Issue: Tower places but doesn't work
+Fix: Ensure the Tower.cs script has all references set (projectile prefab, fire point, etc.)
+
+EXAMPLE SETUP:
+--------------
+Canvas
+├── TowerShopPanel
+│   ├── ArcherButton (with TowerDragHandler.cs, towerPrefab = Archer)
+│   ├── MageButton (with TowerDragHandler.cs, towerPrefab = Mage)
+│   └── CannonButton (with TowerDragHandler.cs, towerPrefab = Cannon)
+
+Scene
+├── TowerPlacementManager (with TowerPlacementManager.cs)
+├── Main Camera
+├── EventSystem (created automatically with Canvas)
+└── Game Objects (path, enemies, etc.)
+
+That's it! You now have a working drag and drop tower defense system!
