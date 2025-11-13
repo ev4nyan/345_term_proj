@@ -129,7 +129,7 @@ MonoBehaviour:
   attackDamage: 10
   attackRange: 0.83
   attackOffset: {x: 0.54, y: -0.45}
-  attackCooldown: 0.7
+  attackCooldown: 0.8
   enemyLayer:
     serializedVersion: 2
     m_Bits: 256
