@@ -159,15 +159,15 @@ public class EnemyWizardPathShooter : MonoBehaviour
                         }
                     }
 
-                    // you can also wait for remainder of attack anim here if you want
+                    // wait for remainder of attack anim here
                 }
             }
         }
 
         if (!isDead)
         {
-            // reached end of path: damage your base / king / etc. here
-            // e.g. FindObjectOfType<KingController>()?.TakeDamage(10);
+            // reached end of path: damage  base / king / etc. here
+            //FindFirstObjectByType<KingController>()?.TakeDamage(10);
             Destroy(gameObject);
         }
     }
