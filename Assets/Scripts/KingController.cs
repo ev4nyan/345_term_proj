@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class KingController : MonoBehaviour
+public class KingController : MonoBehaviour, IDamageable
 {
     [Header("Stats")]
     public int maxHealth = 100;
