@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 7310934162310384162}
   - component: {fileID: 4649879472287104378}
   m_Layer: 8
-  m_Name: Blue Jump
-  m_TagString: Untagged
+  m_Name: Slime
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,11 @@ MonoBehaviour:
   jumpDuration: 0.8
   idleDuration: 1
   jumpHeight: 0.6
+  towerDetectionRange: 15
+  attackRange: 1.5
+  attackDamage: 10
+  attackRate: 1
+  towerTag: Tower
 --- !u!114 &7310934162310384162
 MonoBehaviour:
   m_ObjectHideFlags: 0
