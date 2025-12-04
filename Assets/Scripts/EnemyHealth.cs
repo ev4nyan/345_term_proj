@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 20;
+    public int essenceReward = 5;
+
     int currentHealth;
     Animator animator;
 
@@ -19,6 +21,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            EssenceManager.Instance.Add(essenceReward);
             // optional: play death animation, then destroy
             // animator.SetTrigger("Die");
             Destroy(gameObject);

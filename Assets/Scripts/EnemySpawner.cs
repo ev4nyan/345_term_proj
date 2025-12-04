@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 
 [System.Serializable]
@@ -14,6 +15,12 @@ public class Wave
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance { get; private set; }
+
+    public int KingdomHP = 100;
+    public TMP_Text HealthText;
+    public TMP_Text WaveText;
+
     [Header("Path")]
     public Transform[] pathWaypoints;   // your existing waypoint array
 
@@ -35,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
             for (int w = 0; w < waves.Length; w++)
             {
                 Wave wave = waves[w];
+                WaveText.text = (w+1).ToString();
 
                 // go through enemies in this wave, in order
                 for (int i = 0; i < wave.spawnOrder.Length; i++)
@@ -68,5 +76,10 @@ public class EnemySpawner : MonoBehaviour
         var shooter = enemy.GetComponent<EnemyWizardPathShooter>();
         if (shooter != null)
             shooter.waypoints = pathWaypoints;
+    }
+
+    public void UpdateHealth(int damage)
+    {
+        HealthText.text = (KingdomHP - damage).ToString();
     }
 }

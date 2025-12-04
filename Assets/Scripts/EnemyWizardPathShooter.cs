@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnemyWizardPathShooter : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class EnemyWizardPathShooter : MonoBehaviour
 
     [Header("Health")]
     public int maxHealth = 50;
+    public int essenceReward = 10;
+    public int KingdomDamage = 10;
 
     [Header("Projectile")]
     public GameObject projectilePrefab;
@@ -167,6 +170,7 @@ public class EnemyWizardPathShooter : MonoBehaviour
         if (!isDead)
         {
             // reached end of path: damage  base / king / etc. here
+            EnemySpawner.Instance.UpdateHealth(KingdomDamage);
             //FindFirstObjectByType<KingController>()?.TakeDamage(10);
             Destroy(gameObject);
         }
@@ -214,6 +218,7 @@ public class EnemyWizardPathShooter : MonoBehaviour
             animator.SetTrigger("Die");
             StopAllCoroutines();
             // destroy after death animation length (tweak as needed)
+            EssenceManager.Instance.Add(essenceReward);
             Destroy(gameObject, 1.0f);
         }
     }
