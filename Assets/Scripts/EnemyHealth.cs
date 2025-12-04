@@ -1,10 +1,14 @@
 using UnityEngine;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 20;
     int currentHealth;
     Animator animator;
+
+    // Event for resolve gain on kill
+    public static event Action OnEnemyDied;
 
     void Start()
     {
@@ -19,6 +23,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
+            // Notify listeners (ResolveManager)
+            OnEnemyDied?.Invoke();
             // optional: play death animation, then destroy
             // animator.SetTrigger("Die");
             Destroy(gameObject);
@@ -26,7 +32,8 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             // optional hurt animation
-            animator.SetTrigger("Hurt");
+            if (animator != null)
+                animator.SetTrigger("Hurt");
         }
     }
 }

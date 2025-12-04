@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     private int waypointIndex = 0;
     
     [Header("Tower Attack")]
-    public float towerDetectionRange = 3f;
+    public float towerDetectionRange = 8f;
     public float attackRange = 1.5f;
     public float attackDamage = 10f;
     public float attackRate = 1f;

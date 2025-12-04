@@ -1,0 +1,182 @@
+HERO SYSTEM - "SURVIVAL DEMANDS SACRIFICE"
+==========================================
+
+OVERVIEW:
+---------
+A tower defense where every tower is a hero and every victory is paid for in blood.
+- Heroes are unique, named characters with faces and skills
+- PERMADEATH: When a hero falls, they are gone forever (portrait grays out)
+- FINAL STAND: Ultimate ability that is incredibly powerful but kills the hero
+- RESOLVE: Main resource gained from kills or sacrificing heroes
+
+SCRIPTS CREATED:
+----------------
+Assets/Scripts/Heroes/
+├── HeroData.cs         - ScriptableObject for hero definitions
+├── Hero.cs             - Base class (health, death, ultimate, sacrifice)
+├── HeroKnight.cs       - Melee AoE attacks (like KingController)
+├── HeroArcher.cs       - Ranged projectile attacks
+├── HeroMage.cs         - Cone attacks (like FlamethrowerTower)
+├── ResolveManager.cs   - Tracks resolve resource
+├── HeroRoster.cs       - Tracks available/deployed/fallen heroes
+├── HeroSidebar.cs      - UI panel when clicking a hero
+└── HeroDragHandler.cs  - Drag from UI to place heroes (like TowerDragHandler)
+
+SETUP INSTRUCTIONS:
+===================
+
+STEP 1: Create Hero Data Assets
+-------------------------------
+1. Right-click in Project > Create > Tower Defense > Hero Data
+2. Create 3 heroes: Knight, Archer, Mage
+3. Fill in for each:
+   - Hero Name: "Sir Aldric", "Elena Swift", "Archmage Theron"
+   - Hero Type: Knight/Archer/Mage
+   - Portrait: Assign a sprite
+   - Dead Portrait: Grayed version (optional)
+   - Hero Prefab: The prefab with Hero.cs attached
+   - Backstory: Their story
+   - Stats: maxHealth, attackDamage, attackRange, attackRate
+   - Resolve Cost: 50-100 (cost to summon)
+   - Ultimate Type: UnbreakableShield/ArrowStorm/Meteor
+   - Ultimate Name/Description
+   - Ultimate Damage/Radius
+   - Sacrifice Resolve Gain: 30-50
+
+STEP 2: Create Hero Prefabs
+---------------------------
+Each hero type uses a DIFFERENT script:
+
+KNIGHT PREFAB:
+1. Create GameObject with SpriteRenderer, Animator, Collider2D
+2. Add HeroKnight.cs (NOT Hero.cs)
+3. Configure:
+   - Enemy Layer: set to your enemy layer
+   - Attack Offset: where the melee circle is (e.g., 0.5, 0)
+4. Tag as "Tower"
+
+ARCHER PREFAB:
+1. Create GameObject with SpriteRenderer, Animator, Collider2D
+2. Add HeroArcher.cs
+3. Configure:
+   - Enemy Layer: set to your enemy layer
+   - Fire Point: child transform where arrows spawn
+   - Arrow Prefab: your arrow projectile prefab
+4. Tag as "Tower"
+
+MAGE PREFAB:
+1. Create GameObject with SpriteRenderer, Animator, Collider2D
+2. Add HeroMage.cs
+3. Configure:
+   - Enemy Layer: set to your enemy layer
+   - Cone Angle: half-angle of attack cone (e.g., 45)
+   - Attack Offset: where cone originates
+4. Tag as "Tower"
+
+NOTE: Leave "Hero Data" empty on prefabs - it's assigned at runtime when summoned.
+
+STEP 3: Create Managers (Empty GameObjects)
+-------------------------------------------
+1. Create "ResolveManager" GameObject:
+   - Add ResolveManager.cs
+   - Set Starting Resolve (100)
+   - Set Resolve Per Kill (5)
+   - Assign Resolve Text UI (optional)
+
+2. Create "HeroRoster" GameObject:
+   - Add HeroRoster.cs
+   - Add all HeroData assets to "All Heroes" list
+
+STEP 4: Create UI
+-----------------
+
+A) Resolve Display (top of screen):
+   - Canvas > Panel > TextMeshPro
+   - Assign to ResolveManager.resolveText
+
+B) Hero Portraits (drag to summon):
+   - For each hero, create a UI Image/Button:
+     * Add Image component with hero portrait
+     * Add HeroDragHandler.cs
+     * Assign the HeroData asset to "Hero Data" field
+   - Works exactly like your TowerDragHandler
+   - Portrait auto-grays when hero dies (permadeath)
+   - Portrait dims when hero is deployed
+
+C) Hero Sidebar (right side):
+   - Canvas > Panel (HeroSidebar)
+   - Add HeroSidebar.cs
+   - Create child elements:
+     * Image (heroPortrait)
+     * TextMeshPro (heroNameText)
+     * TextMeshPro (heroTypeText)
+     * TextMeshPro (backstoryText)
+     * TextMeshPro (healthText)
+     * Slider (healthSlider)
+     * TextMeshPro (damageText, rangeText, attackSpeedText)
+     * TextMeshPro (ultimateNameText, ultimateDescText)
+     * Button (finalStandButton) - "FINAL STAND"
+     * Button (sacrificeButton) - "SACRIFICE"
+     * TextMeshPro (sacrificeResolveText)
+     * Button (closeButton) - "X"
+   - Assign all references in HeroSidebar inspector
+
+GAMEPLAY FLOW:
+==============
+
+1. SUMMONING HEROES:
+   - Click a hero portrait (if not grayed out)
+   - If you have enough Resolve, enter placement mode
+   - Click to place the hero
+   - Resolve is spent
+
+2. HERO COMBAT:
+   - Heroes auto-attack enemies in range
+   - Click a hero to open sidebar with stats
+
+3. SACRIFICE:
+   - Click hero > Sidebar opens
+   - Click "SACRIFICE" button
+   - Hero dies, you gain Resolve
+
+4. FINAL STAND:
+   - Click hero > Sidebar opens
+   - Click "FINAL STAND" button
+   - Hero uses devastating ultimate ability
+   - Hero dies after ultimate
+
+5. PERMADEATH:
+   - When a hero dies (any cause), they're gone forever
+   - Portrait grays out in roster
+   - Cannot be summoned again
+
+ULTIMATE ABILITIES:
+===================
+- Knight (Unbreakable Shield): Massive AoE damage around self
+- Archer (Arrow Storm): Rain of arrows in large area (1.5x radius)
+- Mage (Meteor): Devastating strike (2x radius, 1.5x damage)
+
+BALANCING TIPS:
+===============
+- Starting Resolve: 100 (enough for 1-2 heroes)
+- Hero Cost: 50-100 Resolve
+- Sacrifice Gain: 30-50 Resolve (less than cost = meaningful choice)
+- Resolve Per Kill: 5 (slow steady income)
+- Make ultimates powerful enough to be worth the sacrifice
+
+EXAMPLE HERO STATS:
+===================
+Knight "Sir Aldric":
+- Health: 200, Damage: 15, Range: 2, Rate: 1.5/s
+- Cost: 80, Sacrifice: 40
+- Ultimate: Unbreakable Shield (300 dmg, 4 radius)
+
+Archer "Elena Swift":
+- Health: 80, Damage: 25, Range: 8, Rate: 2/s
+- Cost: 60, Sacrifice: 30
+- Ultimate: Arrow Storm (200 dmg, 6 radius)
+
+Mage "Archmage Theron":
+- Health: 60, Damage: 40, Range: 6, Rate: 0.8/s
+- Cost: 100, Sacrifice: 50
+- Ultimate: Meteor (600 dmg, 8 radius)

@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 18694960161859405}
   - component: {fileID: 2652658351692141512}
   - component: {fileID: 8688456946375129631}
-  - component: {fileID: 7020410455256740849}
   - component: {fileID: 1130651115603496936}
   - component: {fileID: 2612881567731584750}
+  - component: {fileID: 1760020420712173510}
+  - component: {fileID: 2996023236481846755}
   m_Layer: 0
   m_Name: King
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,26 +114,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7020410455256740849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3648382972877483802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0b55f9e1d3f3f44a5d97dc60689d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  attackDamage: 10
-  attackRange: 0.83
-  attackOffset: {x: 0.54, y: -0.45}
-  attackCooldown: 0.7
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!61 &1130651115603496936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -187,14 +168,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3648382972877483802}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -206,3 +187,45 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1760020420712173510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648382972877483802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b0b55f9e1d3f3f44a5d97dc60689d20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  attackDamage: 5
+  attackRange: 0.83
+  attackOffset: {x: 0.53, y: -0.45}
+  attackCooldown: 0.8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &2996023236481846755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3648382972877483802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e35043f3b68d545d5ae06134d44a8290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroData: {fileID: 0}
+  currentHealth: 0
+  isDead: 0
+  hasUsedUltimate: 0
+  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 0}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  spriteRenderer: {fileID: 0}
