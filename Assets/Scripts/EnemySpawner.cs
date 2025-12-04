@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SpawnWaves());
+        StartCoroutine(Hold());
     }
 
     private IEnumerator SpawnWaves()
@@ -81,5 +81,11 @@ public class EnemySpawner : MonoBehaviour
     public void UpdateHealth(int damage)
     {
         HealthText.text = (KingdomHP - damage).ToString();
+    }
+
+    private IEnumerator Hold()
+    {
+        yield return new WaitForSeconds(3);
+        StartCoroutine(SpawnWaves());
     }
 }
