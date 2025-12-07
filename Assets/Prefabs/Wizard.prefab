@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6442805565456995480}
   - component: {fileID: 6494866715391367109}
-  - component: {fileID: 6385728580884920400}
   - component: {fileID: 7379702099891459010}
   - component: {fileID: 5322429957348492875}
+  - component: {fileID: -4477676933167403206}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Tower
@@ -90,32 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6385728580884920400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6608893242850171245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22d40948b5a5d4f98ae705d63dafb745, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 200
-  attackDamage: 10
-  coneRange: 1.3
-  coneAngle: 25
-  attackOffset: {x: 0, y: 0}
-  attackCooldown: 0.2
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  rotationSpeed: 0
-  partToRotate: {fileID: 0}
-  enemyTag: Enemy
-  coneGizmoColor: {r: 1, g: 0.5, b: 0, a: 0.3}
-  coneOutlineColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!61 &7379702099891459010
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,3 +163,27 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4477676933167403206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608893242850171245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ccf7e18cf46445619a6c6daa08919f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heroData: {fileID: 0}
+  currentHealth: 0
+  isDead: 0
+  hasUsedUltimate: 0
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  spriteRenderer: {fileID: 6494866715391367109}
+  coneAngle: 45
+  attackOffset: {x: 0, y: 0}
+  coneGizmoColor: {r: 0.5, g: 0, b: 1, a: 0.3}
+  coneOutlineColor: {r: 1, g: 0, b: 1, a: 1}

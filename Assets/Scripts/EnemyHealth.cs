@@ -1,7 +1,10 @@
 using UnityEngine;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public static event Action OnEnemyDied;
+
     public int maxHealth = 20;
     public int essenceReward = 5;
 
@@ -22,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         {
             currentHealth = 0;
             EssenceManager.Instance.Add(essenceReward);
+            OnEnemyDied?.Invoke();
             // optional: play death animation, then destroy
             // animator.SetTrigger("Die");
             Destroy(gameObject);
