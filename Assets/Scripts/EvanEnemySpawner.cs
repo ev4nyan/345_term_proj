@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EvanEnemySpawner : MonoBehaviour
 {
     [Header("Enemy Prefabs")]
     public GameObject slimePrefab;
