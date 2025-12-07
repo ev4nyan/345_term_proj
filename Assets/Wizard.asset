@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bd03812c5ff644c78eb42b3a841c85a, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  heroName: Unknown Hero
-  heroType: 0
+  heroName: Marlin
+  heroType: 2
   portrait: {fileID: 0}
   deadPortrait: {fileID: 0}
-  heroPrefab: {fileID: 0}
+  heroPrefab: {fileID: 6608893242850171245, guid: 4532c4ecba8264dd7ae27e264db4334d, type: 3}
   backstory: 
   maxHealth: 100
   attackDamage: 20
   attackRange: 5
   attackRate: 1
   resolveCost: 50
-  ultimateType: 0
+  ultimateType: 1
   ultimateName: Final Stand
   ultimateDescription: 
   ultimateDamage: 500
