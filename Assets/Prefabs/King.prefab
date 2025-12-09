@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5976134248469519404}
   m_Layer: 0
   m_Name: King
-  m_TagString: Tower
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -204,6 +204,7 @@ MonoBehaviour:
   hasUsedUltimate: 0
   enemyLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   spriteRenderer: {fileID: 0}
   attackOffset: {x: 0, y: 0}
+  friendlyDragonPrefab: {fileID: 7657266265459489894, guid: cee51cf41b08a41c69c4d49e89297157, type: 3}

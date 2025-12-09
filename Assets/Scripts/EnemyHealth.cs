@@ -24,16 +24,18 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            EssenceManager.Instance.Add(essenceReward);
+            if (EssenceManager.Instance != null)
+                EssenceManager.Instance.Add(essenceReward);
             OnEnemyDied?.Invoke();
             // optional: play death animation, then destroy
-            // animator.SetTrigger("Die");
+            // if (animator != null) animator.SetTrigger("Die");
             Destroy(gameObject);
         }
         else
         {
             // optional hurt animation
-            animator.SetTrigger("Hurt");
+            if (animator != null)
+                animator.SetTrigger("Hurt");
         }
     }
 }

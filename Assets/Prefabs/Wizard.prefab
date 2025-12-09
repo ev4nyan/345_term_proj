@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4477676933167403206}
   m_Layer: 0
   m_Name: Wizard
-  m_TagString: Tower
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,7 +183,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   spriteRenderer: {fileID: 6494866715391367109}
-  coneAngle: 45
+  coneAngle: 180
   attackOffset: {x: 0, y: 0}
   coneGizmoColor: {r: 0.5, g: 0, b: 1, a: 0.3}
   coneOutlineColor: {r: 1, g: 0, b: 1, a: 1}

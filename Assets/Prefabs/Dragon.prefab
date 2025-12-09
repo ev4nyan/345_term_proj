@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4182262378001897713}
   - component: {fileID: 1307606888552411097}
   - component: {fileID: 7777038472556053973}
+  - component: {fileID: 5908469554518370215}
   m_Layer: 8
   m_Name: Dragon
   m_TagString: Enemy
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271635004794845369}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 6.19, y: -1.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &4182262378001897713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -78,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -7385890505098768778, guid: 070faeb76bd4b4f99a7a360fb8b73e53, type: 3}
+  m_Sprite: {fileID: 5913769763195984259, guid: 6cb3fb63f8f4c4b7ea6582233326b8fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 2.46}
+  m_Size: {x: 1.62, y: 1.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,6 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 20
+  essenceReward: 5
 --- !u!114 &7777038472556053973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,13 +117,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  moveSpeed: 2
-  bobAmplitude: 0.15
-  bobFrequency: 2
+  moveSpeed: 0.1
+  bobAmplitude: 0.5
+  bobFrequency: 3
   fireballPrefab: {fileID: 1659373104240289144, guid: f89c8f2de6908428fbad203e1a017cc8, type: 3}
   firePoint: {fileID: 0}
   fireballRange: 6
   fireballDamage: 15
   fireRate: 1.5
-  towerTag: Tower
-  heroTag: Tower
+  heroTag: Hero
+  heroDetectionRange: 8
+  heroAttackRange: 1.5
+  heroAttackDamage: 15
+  endOfPathDamage: 15
+--- !u!58 &5908469554518370215
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271635004794845369}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.8100002

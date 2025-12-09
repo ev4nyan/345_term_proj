@@ -83,20 +83,19 @@ public class Fireball : MonoBehaviour
             towerHealth.TakeDamage(damage);
             return;
         }
-        
-        // Try FlamethrowerTower
-        FlamethrowerTower flameTower = target.GetComponent<FlamethrowerTower>();
-        if (flameTower != null)
-        {
-            flameTower.TakeDamage((int)damage);
-            return;
-        }
-        
+
         // Try Hero
         Hero hero = target.GetComponent<Hero>();
         if (hero != null)
         {
             hero.TakeDamage((int)damage);
+            return;
+        }
+
+        EnemyHealth enemyHealth = target.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage((int)damage);
             return;
         }
     }

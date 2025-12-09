@@ -1,8 +1,9 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Mage hero - Cone attacks like FlamethrowerTower.
-/// Damages all enemies in a cone in front of the mage.
+/// Ultimate: Devastating fire storm that damages all enemies in a large area.
 /// </summary>
 public class HeroMage : Hero
 {
@@ -13,6 +14,11 @@ public class HeroMage : Hero
     [Header("Visual")]
     public Color coneGizmoColor = new Color(0.5f, 0f, 1f, 0.3f); // Purple
     public Color coneOutlineColor = Color.magenta;
+
+    [Header("Ultimate - Fire Storm")]
+    public GameObject fireStormEffectPrefab;  // Optional visual effect
+    public int fireStormTicks = 5;            // Number of damage ticks
+    public float fireStormTickRate = 0.5f;    // Time between ticks
 
     protected override void Start()
     {
@@ -93,6 +99,38 @@ public class HeroMage : Hero
     Vector2 GetAttackOffset()
     {
         return new Vector2(facingRight ? attackOffset.x : -attackOffset.x, attackOffset.y);
+    }
+
+    protected override void ExecuteFireStorm()
+    {
+        Debug.Log($"{heroData.heroName} unleashes FIRE STORM!");
+
+        // Spawn visual effect if available
+        if (fireStormEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(fireStormEffectPrefab, transform.position, Quaternion.identity);
+            Destroy(effect, fireStormTicks * fireStormTickRate + 1f);
+        }
+
+        // Start the fire storm coroutine
+        StartCoroutine(FireStormDamage());
+    }
+
+    IEnumerator FireStormDamage()
+    {
+        float damagePerTick = heroData.ultimateDamage / fireStormTicks;
+
+        for (int i = 0; i < fireStormTicks; i++)
+        {
+            // Damage all enemies in radius
+            Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, heroData.ultimateRadius, enemyLayer);
+            foreach (var enemy in enemies)
+            {
+                DealDamageToTarget(enemy.gameObject, damagePerTick);
+            }
+
+            yield return new WaitForSeconds(fireStormTickRate);
+        }
     }
 
     void OnDrawGizmosSelected()

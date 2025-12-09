@@ -14,17 +14,20 @@ public class EnemyPathFollower : MonoBehaviour
     public float idleDuration = 0.15f;
     public float jumpHeight = 0.25f;
 
-    [Header("Tower Attack")]
-    public float towerDetectionRange = 8f;
+    [Header("Hero Attack")]
+    public float heroDetectionRange = 8f;
     public float attackRange = 1.5f;
-    public float attackDamage = 10f;
+    public int attackDamage = 10;
     public float attackRate = 1f;
-    public string towerTag = "Tower";
+    public string heroTag = "Hero";
+
+    [Header("End of Path Damage")]
+    public int endOfPathDamage = 10;
 
     private List<Vector3> hopPoints = new List<Vector3>();
     private Animator animator;
-    private Transform targetTower;
-    private bool isAttackingTower = false;
+    private Transform targetHero;
+    private bool isAttackingHero = false;
     private Coroutine currentBehavior;
     private int currentHopIndex = 0;
 
@@ -41,58 +44,70 @@ public class EnemyPathFollower : MonoBehaviour
 
     void Update()
     {
-        // Continuously check for towers
-        DetectTowers();
+        // Continuously check for heroes
+        DetectHeroes();
     }
 
-    void DetectTowers()
+    void DetectHeroes()
     {
-        GameObject[] towers = GameObject.FindGameObjectsWithTag(towerTag);
+        GameObject[] heroes = GameObject.FindGameObjectsWithTag(heroTag);
         float closestDistance = Mathf.Infinity;
-        Transform closestTower = null;
+        Transform closestHero = null;
 
-        foreach (GameObject tower in towers)
+        foreach (GameObject hero in heroes)
         {
-            float distance = Vector2.Distance(transform.position, tower.transform.position);
-            if (distance < towerDetectionRange && distance < closestDistance)
+            Hero h = hero.GetComponent<Hero>();
+            if (h != null && h.isDead) continue;
+
+            float distance = Vector2.Distance(transform.position, hero.transform.position);
+            if (distance < heroDetectionRange && distance < closestDistance)
             {
                 closestDistance = distance;
-                closestTower = tower.transform;
+                closestHero = hero.transform;
             }
         }
 
-        // Switch to attacking if we found a tower and aren't already attacking
-        if (closestTower != null && !isAttackingTower)
+        // Switch to attacking if we found a hero and aren't already attacking
+        if (closestHero != null && !isAttackingHero)
         {
-            targetTower = closestTower;
-            isAttackingTower = true;
+            targetHero = closestHero;
+            isAttackingHero = true;
             if (currentBehavior != null)
                 StopCoroutine(currentBehavior);
-            currentBehavior = StartCoroutine(AttackTowerBehavior());
+            currentBehavior = StartCoroutine(AttackHeroBehavior());
         }
-        // If we were attacking but tower is gone, resume path
-        else if (closestTower == null && isAttackingTower)
+        // If we were attacking but hero is gone, resume path
+        else if (closestHero == null && isAttackingHero)
         {
-            isAttackingTower = false;
-            targetTower = null;
+            isAttackingHero = false;
+            targetHero = null;
             if (currentBehavior != null)
                 StopCoroutine(currentBehavior);
             currentBehavior = StartCoroutine(FollowHops());
         }
     }
 
-    IEnumerator AttackTowerBehavior()
+    IEnumerator AttackHeroBehavior()
     {
         float attackCooldown = 0f;
 
-        while (isAttackingTower && targetTower != null)
+        while (isAttackingHero && targetHero != null)
         {
-            float distanceToTower = Vector2.Distance(transform.position, targetTower.position);
-
-            if (distanceToTower > attackRange)
+            Hero h = targetHero.GetComponent<Hero>();
+            if (h != null && h.isDead)
             {
-                // Hop toward the tower
-                Vector3 dir = (targetTower.position - transform.position).normalized;
+                isAttackingHero = false;
+                targetHero = null;
+                currentBehavior = StartCoroutine(FollowHops());
+                yield break;
+            }
+
+            float distanceToHero = Vector2.Distance(transform.position, targetHero.position);
+
+            if (distanceToHero > attackRange)
+            {
+                // Hop toward the hero
+                Vector3 dir = (targetHero.position - transform.position).normalized;
                 Vector3 hopTarget = transform.position + dir * hopDistance;
 
                 // Face movement direction
@@ -111,7 +126,7 @@ public class EnemyPathFollower : MonoBehaviour
                 }
                 yield return new WaitForSeconds(startupDuration);
 
-                // Hop toward tower
+                // Hop toward hero
                 Vector3 start = transform.position;
                 float t = 0f;
                 while (t < jumpDuration)
@@ -129,10 +144,10 @@ public class EnemyPathFollower : MonoBehaviour
             }
             else
             {
-                // In attack range - deal damage
+                // In attack range - deal damage to hero
                 if (attackCooldown <= 0f)
                 {
-                    DealDamageToTower(targetTower.gameObject);
+                    h?.TakeDamage(attackDamage);
                     attackCooldown = 1f / attackRate;
 
                     // Play attack animation if available
@@ -147,27 +162,9 @@ public class EnemyPathFollower : MonoBehaviour
             }
         }
 
-        // Tower destroyed or out of range, resume path
-        isAttackingTower = false;
+        // Hero destroyed or out of range, resume path
+        isAttackingHero = false;
         currentBehavior = StartCoroutine(FollowHops());
-    }
-
-    void DealDamageToTower(GameObject tower)
-    {
-        TowerHealth towerHealth = tower.GetComponent<TowerHealth>();
-        if (towerHealth != null)
-        {
-            towerHealth.TakeDamage(attackDamage);
-        }
-        else
-        {
-            // Try FlamethrowerTower
-            FlamethrowerTower flameTower = tower.GetComponent<FlamethrowerTower>();
-            if (flameTower != null)
-            {
-                flameTower.TakeDamage((int)attackDamage);
-            }
-        }
     }
 
     // Build evenly spaced hop points along the path
@@ -261,20 +258,20 @@ public class EnemyPathFollower : MonoBehaviour
             yield return new WaitForSeconds(idleDuration);
         }
 
-        // reached the end of the path
-        KingController king = FindFirstObjectByType<KingController>();
-        if (king != null)
+        // reached the end of the path - deal damage (deduct resolve)
+        if (ResolveManager.Instance != null)
         {
-            king.TakeDamage(10);   // or whatever damage per slime
+            ResolveManager.Instance.SpendResolve(endOfPathDamage);
+            Debug.Log($"Enemy reached the end! Lost {endOfPathDamage} resolve.");
         }
         Destroy(gameObject);
     }
 
     void OnDrawGizmosSelected()
     {
-        // Draw tower detection range
+        // Draw hero detection range
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, towerDetectionRange);
+        Gizmos.DrawWireSphere(transform.position, heroDetectionRange);
 
         // Draw attack range
         Gizmos.color = Color.red;

@@ -60,17 +60,17 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         if (portraitImage == null || heroData == null) return;
 
-        bool isFallen = HeroRoster.Instance != null && HeroRoster.Instance.IsHeroFallen(heroData);
-        bool isDeployed = HeroRoster.Instance != null && HeroRoster.Instance.IsHeroDeployed(heroData);
+        bool isFallen = heroData.hasPermadeath && HeroRoster.Instance != null && HeroRoster.Instance.IsHeroFallen(heroData);
+        bool isDeployed = heroData.singlePlacement && HeroRoster.Instance != null && HeroRoster.Instance.IsHeroDeployed(heroData);
 
         if (isFallen)
         {
-            // Gray out - hero is dead forever
+            // Gray out - hero is dead forever (only for permadeath heroes)
             portraitImage.color = fallenColor;
         }
         else if (isDeployed)
         {
-            // Slightly dimmed - already on field
+            // Slightly dimmed - already on field (only for single placement heroes)
             portraitImage.color = deployedColor;
         }
         else
@@ -105,6 +105,9 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // Create preview hero
         Vector3 worldPos = GetWorldPosition(eventData);
         draggedHero = Instantiate(heroData.heroPrefab, worldPos, Quaternion.identity);
+
+        // Remove tag during drag so enemies don't target it
+        draggedHero.tag = "Untagged";
 
         // Disable hero script during drag
         Hero heroScript = draggedHero.GetComponent<Hero>();
@@ -176,8 +179,8 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             // Restore opacity
             RestoreHeroOpacity(draggedHero);
 
-            // Tag as Tower for enemy targeting
-            draggedHero.tag = "Tower";
+            // Tag as Hero for enemy targeting
+            draggedHero.tag = "Hero";
 
             // Register with placement manager if exists
             if (TowerPlacementManager.Instance != null)
@@ -205,15 +208,15 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     bool CanSummonHero()
     {
-        // Check if fallen (permadeath)
-        if (HeroRoster.Instance != null && HeroRoster.Instance.IsHeroFallen(heroData))
+        // Check if fallen (only matters if hasPermadeath)
+        if (heroData.hasPermadeath && HeroRoster.Instance != null && HeroRoster.Instance.IsHeroFallen(heroData))
         {
             Debug.Log($"{heroData.heroName} has fallen and cannot return.");
             return false;
         }
 
-        // Check if already deployed
-        if (HeroRoster.Instance != null && HeroRoster.Instance.IsHeroDeployed(heroData))
+        // Check if already deployed (only matters if singlePlacement)
+        if (heroData.singlePlacement && HeroRoster.Instance != null && HeroRoster.Instance.IsHeroDeployed(heroData))
         {
             Debug.Log($"{heroData.heroName} is already on the battlefield.");
             return false;

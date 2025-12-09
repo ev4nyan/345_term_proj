@@ -77,7 +77,7 @@ public class ResolveManager : MonoBehaviour
     {
         if (resolveText != null)
         {
-            resolveText.text = $"Resolve: {currentResolve}";
+            resolveText.text = currentResolve.ToString();
         }
     }
 }

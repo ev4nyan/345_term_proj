@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd03812c5ff644c78eb42b3a841c85a, type: 3}
+  m_Name: Cleric
+  m_EditorClassIdentifier: 
+  heroName: Guy
+  heroType: 2
+  portrait: {fileID: 7694014812932834686, guid: 68e3af7bfd460405bb69ac1c99c7ecec, type: 3}
+  deadPortrait: {fileID: 0}
+  heroPrefab: {fileID: 6962061359043668197, guid: 58396cdde922844ce91c8593f2565e65, type: 3}
+  backstory: HE HEALS PEOPLE!
+  maxHealth: 100
+  attackDamage: 20
+  attackRange: 5
+  attackRate: 1
+  resolveCost: 50
+  hasPermadeath: 0
+  singlePlacement: 0
+  ultimateType: 0
+  ultimateName: Final Stand
+  ultimateDescription: 
+  ultimateDamage: 500
+  ultimateRadius: 5
+  sacrificeResolveGain: 30

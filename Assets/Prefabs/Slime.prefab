@@ -131,11 +131,12 @@ MonoBehaviour:
   jumpDuration: 0.8
   idleDuration: 1
   jumpHeight: 0.6
-  towerDetectionRange: 15
+  heroDetectionRange: 8
   attackRange: 1.5
   attackDamage: 10
   attackRate: 1
-  towerTag: Tower
+  heroTag: Hero
+  endOfPathDamage: 10
 --- !u!114 &7310934162310384162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c9a00e7efe7c54d9020c7c01fed844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 10
+  essenceReward: 5
 --- !u!58 &4649879472287104378
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public enum HeroType { Knight, Archer, Mage }
-public enum UltimateType { UnbreakableShield, ArrowStorm, Meteor }
+public enum HeroType { King, Warrior, Warlock, Mage }
+public enum UltimateType { DragonSummon, BlackHole, FireStorm, MassResurrection }
 
 [CreateAssetMenu(fileName = "NewHero", menuName = "Tower Defense/Hero Data")]
 public class HeroData : ScriptableObject
@@ -25,6 +25,10 @@ public class HeroData : ScriptableObject
 
     [Header("Cost")]
     public int resolveCost = 50; // Cost to summon this hero
+
+    [Header("Deployment Rules")]
+    public bool hasPermadeath = false;    // If true, hero dies forever when killed
+    public bool singlePlacement = false;  // If true, can only have one on field at a time
 
     [Header("Ultimate - Final Stand")]
     public UltimateType ultimateType;

@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd03812c5ff644c78eb42b3a841c85a, type: 3}
+  m_Name: Wizard
+  m_EditorClassIdentifier: 
+  heroName: Marlin
+  heroType: 3
+  portrait: {fileID: 1457491203435894738, guid: cff93a66bff794cb18c53eba8d979cd3, type: 3}
+  deadPortrait: {fileID: 0}
+  heroPrefab: {fileID: 6608893242850171245, guid: 4532c4ecba8264dd7ae27e264db4334d, type: 3}
+  backstory: Marlin the wizard he is the wizard from wizardtown
+  maxHealth: 100
+  attackDamage: 20
+  attackRange: 5
+  attackRate: 1
+  resolveCost: 50
+  hasPermadeath: 0
+  singlePlacement: 0
+  ultimateType: 1
+  ultimateName: Final Stand
+  ultimateDescription: 
+  ultimateDamage: 500
+  ultimateRadius: 5
+  sacrificeResolveGain: 30

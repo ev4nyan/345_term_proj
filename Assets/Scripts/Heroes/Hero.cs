@@ -135,29 +135,38 @@ public class Hero : MonoBehaviour
         Destroy(gameObject, 1.5f);
     }
 
-    // FINAL STAND - Ultimate ability that kills the hero
-    public void ActivateFinalStand()
+    // FINAL STAND - Ultimate ability that sacrifices the hero
+    public virtual void ActivateFinalStand()
     {
         if (isDead || hasUsedUltimate) return;
 
         hasUsedUltimate = true;
 
-        // Execute ultimate based on type
-        switch (heroData.ultimateType)
-        {
-            case UltimateType.UnbreakableShield:
-                ExecuteUnbreakableShield();
-                break;
-            case UltimateType.ArrowStorm:
-                ExecuteArrowStorm();
-                break;
-            case UltimateType.Meteor:
-                ExecuteMeteor();
-                break;
-        }
+        // Execute ultimate based on type (can be overridden in subclasses)
+        ExecuteUltimate();
 
         // Hero dies after using ultimate
         StartCoroutine(DieAfterUltimate());
+    }
+
+    protected virtual void ExecuteUltimate()
+    {
+        // Default implementation based on ultimateType
+        switch (heroData.ultimateType)
+        {
+            case UltimateType.DragonSummon:
+                ExecuteDragonSummon();
+                break;
+            case UltimateType.BlackHole:
+                ExecuteBlackHole();
+                break;
+            case UltimateType.FireStorm:
+                ExecuteFireStorm();
+                break;
+            case UltimateType.MassResurrection:
+                ExecuteMassResurrection();
+                break;
+        }
     }
 
     System.Collections.IEnumerator DieAfterUltimate()
@@ -166,46 +175,44 @@ public class Hero : MonoBehaviour
         Die();
     }
 
-    void ExecuteUnbreakableShield()
+    protected virtual void ExecuteDragonSummon()
     {
-        // Knight: Massive AoE damage and brief invulnerability to nearby allies
-        Debug.Log($"{heroData.heroName} activates UNBREAKABLE SHIELD!");
+        // King: Summon a friendly dragon to fight enemies
+        Debug.Log($"{heroData.heroName} summons a DRAGON!");
+        // Override in HeroKing to spawn actual dragon
+    }
+
+    protected virtual void ExecuteBlackHole()
+    {
+        // Warrior: Create a black hole that pulls and damages enemies
+        Debug.Log($"{heroData.heroName} creates a BLACK HOLE!");
+        // Override in HeroWarrior to spawn black hole
+    }
+
+    protected virtual void ExecuteFireStorm()
+    {
+        // Mage: Devastating fire storm
+        Debug.Log($"{heroData.heroName} unleashes FIRE STORM!");
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, heroData.ultimateRadius, enemyLayer);
         foreach (var enemy in enemies)
         {
             DealDamageToTarget(enemy.gameObject, heroData.ultimateDamage);
         }
-
-        // Visual effect placeholder
-        // TODO: Add particle effects
     }
 
-    void ExecuteArrowStorm()
+    protected virtual void ExecuteMassResurrection()
     {
-        // Archer: Rain of arrows across a large area
-        Debug.Log($"{heroData.heroName} activates ARROW STORM!");
-
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, heroData.ultimateRadius * 1.5f, enemyLayer);
-        foreach (var enemy in enemies)
+        // Cleric: Revive all fallen heroes
+        Debug.Log($"{heroData.heroName} casts MASS RESURRECTION!");
+        
+        if (HeroRoster.Instance != null)
         {
-            DealDamageToTarget(enemy.gameObject, heroData.ultimateDamage * 0.8f);
+            HeroRoster.Instance.ReviveAllFallenHeroes();
         }
     }
 
-    void ExecuteMeteor()
-    {
-        // Mage: Devastating meteor strike
-        Debug.Log($"{heroData.heroName} activates METEOR!");
-
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, heroData.ultimateRadius * 2f, enemyLayer);
-        foreach (var enemy in enemies)
-        {
-            DealDamageToTarget(enemy.gameObject, heroData.ultimateDamage * 1.5f);
-        }
-    }
-
-    // Sacrifice for Resolve
+    // Sacrifice for Resolve - also triggers ultimate!
     public void Sacrifice()
     {
         if (isDead) return;
@@ -217,8 +224,11 @@ public class Hero : MonoBehaviour
         // Grant resolve
         ResolveManager.Instance?.AddResolve(heroData.sacrificeResolveGain);
 
-        // Die immediately
-        Die();
+        // Execute ultimate ability before dying
+        ExecuteUltimate();
+
+        // Die after ultimate
+        StartCoroutine(DieAfterUltimate());
     }
 
     // Click detection

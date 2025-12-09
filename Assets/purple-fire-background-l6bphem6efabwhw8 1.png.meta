@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: ce0a8fea84ef84a30be5a778222cc18e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7165002104314348303
+    second: purple-fire-background-l6bphem6efabwhw8 1_0
+  - first:
+      213: 457446640098766064
+    second: purple-fire-background-l6bphem6efabwhw8 1_1
+  - first:
+      213: 3585047518623716190
+    second: purple-fire-background-l6bphem6efabwhw8 1_2
+  - first:
+      213: 1292106828186456503
+    second: purple-fire-background-l6bphem6efabwhw8 1_3
+  - first:
+      213: 6243985766543889523
+    second: purple-fire-background-l6bphem6efabwhw8 1_4
+  - first:
+      213: 4883005095507551707
+    second: purple-fire-background-l6bphem6efabwhw8 1_5
+  - first:
+      213: -4062699236796767447
+    second: purple-fire-background-l6bphem6efabwhw8 1_6
+  - first:
+      213: 6105837405942182641
+    second: purple-fire-background-l6bphem6efabwhw8 1_7
+  - first:
+      213: 4195562331434303951
+    second: purple-fire-background-l6bphem6efabwhw8 1_8
+  - first:
+      213: -1503718832686749249
+    second: purple-fire-background-l6bphem6efabwhw8 1_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_0
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 588
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fcba654c8cc09c90800000000000000
+      internalID: -7165002104314348303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_1
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 582
+        width: 10
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0fc68c6ab4d295600800000000000000
+      internalID: 457446640098766064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_2
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 165
+        width: 888
+        height: 1000
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e53567a49b5a0c130800000000000000
+      internalID: 3585047518623716190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_3
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 568
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b119e9705c7ee110800000000000000
+      internalID: 1292106828186456503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 521
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 374917df8f717a650800000000000000
+      internalID: 6243985766543889523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_5
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 521
+        width: 15
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd5662a534be3c340800000000000000
+      internalID: 4883005095507551707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 488
+        width: 13
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9236a79b1946e97c0800000000000000
+      internalID: -4062699236796767447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_7
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 456
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f2f97545ca4cb450800000000000000
+      internalID: 6105837405942182641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_8
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 446
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1c62e16b1a93a30800000000000000
+      internalID: 4195562331434303951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: purple-fire-background-l6bphem6efabwhw8 1_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 242
+        width: 8
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb924af40b7b12be0800000000000000
+      internalID: -1503718832686749249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      purple-fire-background-l6bphem6efabwhw8 1_0: -7165002104314348303
+      purple-fire-background-l6bphem6efabwhw8 1_1: 457446640098766064
+      purple-fire-background-l6bphem6efabwhw8 1_2: 3585047518623716190
+      purple-fire-background-l6bphem6efabwhw8 1_3: 1292106828186456503
+      purple-fire-background-l6bphem6efabwhw8 1_4: 6243985766543889523
+      purple-fire-background-l6bphem6efabwhw8 1_5: 4883005095507551707
+      purple-fire-background-l6bphem6efabwhw8 1_6: -4062699236796767447
+      purple-fire-background-l6bphem6efabwhw8 1_7: 6105837405942182641
+      purple-fire-background-l6bphem6efabwhw8 1_8: 4195562331434303951
+      purple-fire-background-l6bphem6efabwhw8 1_9: -1503718832686749249
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
