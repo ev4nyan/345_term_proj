@@ -25,7 +25,7 @@ MonoBehaviour:
   resolveCost: 50
   hasPermadeath: 0
   singlePlacement: 0
-  ultimateType: 0
+  ultimateType: 3
   ultimateName: Final Stand
   ultimateDescription: 
   ultimateDamage: 500
