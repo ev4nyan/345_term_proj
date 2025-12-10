@@ -8,6 +8,9 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 20;
     public int essenceReward = 5;
 
+    private AudioSource audioSource;
+    public AudioClip hitClip;
+
     int currentHealth;
     Animator animator;
 
@@ -15,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        audioSource = FindFirstObjectByType<Canvas>().GetComponent<AudioSource>();
     }
 
     public void TakeDamage(int amount)
@@ -36,6 +40,7 @@ public class EnemyHealth : MonoBehaviour
             // optional hurt animation
             if (animator != null)
                 animator.SetTrigger("Hurt");
+            audioSource.PlayOneShot(hitClip);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class DragonPathFollower : MonoBehaviour
 {
@@ -38,8 +39,12 @@ public class DragonPathFollower : MonoBehaviour
     private bool isAttackingHero = false;
     private Coroutine currentBehavior;
 
+    private AudioSource audioSource;
+    public AudioClip attackClip;
+
     void Start()
     {
+        audioSource = FindFirstObjectByType<Canvas>().GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         bobOffset = Random.Range(0f, Mathf.PI * 2f); // randomize bob phase
 
@@ -203,8 +208,9 @@ public class DragonPathFollower : MonoBehaviour
         if (animator != null)
         {
             animator.SetTrigger("Atk");
-        }
 
+        }
+        audioSource.PlayOneShot(attackClip);
         // Calculate direction to target
         Vector2 direction = ((Vector2)target.position - (Vector2)firePoint.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
