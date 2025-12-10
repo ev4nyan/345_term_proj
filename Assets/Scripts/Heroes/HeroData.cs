@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public enum HeroType { King, Warrior, Warlock, Mage }
-public enum UltimateType { DragonSummon, BlackHole, FireStorm, MassResurrection }
+public enum HeroType { King, Warrior, Warlock, Mage, Teleporter, Samurai, MageKnight, Archer, Cleric }
+public enum UltimateType { DragonSummon, BlackHole, FireStorm, MassResurrection, TeleportStrike, ThousandCuts, ThunderGod, ArrowRain }
 
 [CreateAssetMenu(fileName = "NewHero", menuName = "Tower Defense/Hero Data")]
 public class HeroData : ScriptableObject

@@ -111,7 +111,7 @@ MonoBehaviour:
     m_Bits: 256
   spriteRenderer: {fileID: 0}
   attackOffset: {x: 0, y: 0}
-  shieldDuration: 2
+  shieldDuration: 1.75
   shieldCooldown: 8
   shieldColor: {r: 0.5, g: 0.8, b: 1, a: 0.8}
   blackHolePrefab: {fileID: 60517261302478442, guid: 40509fbc944e14b08ac7cbf1c8a2138f, type: 3}

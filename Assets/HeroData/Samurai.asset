@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd03812c5ff644c78eb42b3a841c85a, type: 3}
+  m_Name: Samurai
+  m_EditorClassIdentifier: 
+  heroName: Yasuo
+  heroType: 5
+  portrait: {fileID: 9174161219643431701, guid: 80f7875604c74484d8bac50b7d8fc1cc, type: 3}
+  deadPortrait: {fileID: 0}
+  heroPrefab: {fileID: 7939446154535989548, guid: 684aea266598948b2a58922598de1915, type: 3}
+  backstory: 
+  maxHealth: 100
+  attackDamage: 0
+  attackRange: 5
+  attackRate: 1
+  resolveCost: 180
+  hasPermadeath: 1
+  singlePlacement: 1
+  ultimateType: 5
+  ultimateName: Final Stand
+  ultimateDescription: 
+  ultimateDamage: 500
+  ultimateRadius: 5
+  sacrificeResolveGain: 30

@@ -93,7 +93,7 @@ public class HeroWarrior : Hero
 
         // Play shield animation if available
         if (animator != null)
-            animator.SetTrigger("Shield");
+            animator.SetTrigger("Block");
 
         Debug.Log($"{heroData?.heroName} raises shield!");
     }
@@ -110,7 +110,7 @@ public class HeroWarrior : Hero
     }
 
     // Override TakeDamage to block damage while shielded
-    public new void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         if (isDead) return;
 

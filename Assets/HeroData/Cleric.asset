@@ -21,8 +21,8 @@ MonoBehaviour:
   maxHealth: 120
   attackDamage: 18
   attackRange: 4
-  attackRate: 0.5
-  resolveCost: 25
+  attackRate: 0.125
+  resolveCost: 120
   hasPermadeath: 1
   singlePlacement: 1
   ultimateType: 3
