@@ -23,6 +23,9 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private Image portraitImage;
     private Color originalColor;
 
+    [Header("Grid / Tilemap Snapping")]
+    [SerializeField] private Grid grid;
+
     void Awake()
     {
         mainCamera = Camera.main;
@@ -132,8 +135,10 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (draggedHero != null)
         {
             Vector3 worldPos = GetWorldPosition(eventData);
-            draggedHero.transform.position = worldPos;
-            UpdatePlacementVisual(worldPos);
+            Vector3 snappedPos = SnapToGrid(worldPos);
+
+            draggedHero.transform.position = snappedPos;
+            UpdatePlacementVisual(snappedPos);
         }
     }
 
@@ -149,9 +154,10 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         if (draggedHero == null) return;
 
         Vector3 worldPos = GetWorldPosition(eventData);
+        Vector3 snappedPos = SnapToGrid(worldPos);
 
         // Check placement validity
-        bool canPlace = CanPlaceAt(worldPos);
+        bool canPlace = CanPlaceAt(snappedPos);
 
         if (canPlace && ResolveManager.Instance.SpendResolve(heroData.resolveCost))
         {
@@ -185,7 +191,7 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             // Register with placement manager if exists
             if (TowerPlacementManager.Instance != null)
             {
-                TowerPlacementManager.Instance.RegisterTowerPlacement(worldPos);
+                TowerPlacementManager.Instance.RegisterTowerPlacement(snappedPos);
             }
 
             Debug.Log($"{heroData.heroName} deployed for {heroData.resolveCost} Resolve!");
@@ -243,6 +249,17 @@ public class HeroDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         // Fallback: check for overlapping colliders
         Collider2D hit = Physics2D.OverlapCircle(position, 0.5f);
         return hit == null;
+    }
+
+    Vector3 SnapToGrid(Vector3 worldPos)
+    {
+        if (grid == null)
+            return worldPos; // fallback if grid not assigned
+
+        Vector3Int cell = grid.WorldToCell(worldPos);
+        Vector3 snapped = grid.GetCellCenterWorld(cell);
+        snapped.z = 0f;
+        return snapped;
     }
 
     Vector3 GetWorldPosition(PointerEventData eventData)
