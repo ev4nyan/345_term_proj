@@ -46,7 +46,8 @@ public class EnemySpawner : MonoBehaviour
             for (int w = 0; w < waves.Length; w++)
             {
                 Wave wave = waves[w];
-                WaveText.text = (w+1).ToString();
+                int currentWaveNumber = w + 1;
+                WaveText.text = currentWaveNumber.ToString();
 
                 // go through enemies in this wave, in order
                 for (int i = 0; i < wave.spawnOrder.Length; i++)
@@ -61,9 +62,27 @@ public class EnemySpawner : MonoBehaviour
 
                 // pause before next wave
                 yield return new WaitForSeconds(wave.delayAfterWave);
+
+                // Check for win condition after wave completes
+                if (GameOverManager.Instance != null && currentWaveNumber >= GameOverManager.Instance.winWave)
+                {
+                    // Wait for all enemies to be cleared before triggering win
+                    yield return StartCoroutine(WaitForEnemiesCleared());
+                    GameOverManager.Instance.TriggerWin();
+                    yield break;
+                }
             }
         }
         while (loop);
+    }
+
+    private IEnumerator WaitForEnemiesCleared()
+    {
+        // Wait until no enemies remain
+        while (GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
     }
 
     private void SpawnEnemy(GameObject enemyPrefab)

@@ -63,9 +63,33 @@ public class ResolveManager : MonoBehaviour
             currentResolve -= amount;
             UpdateUI();
             OnResolveChanged?.Invoke(currentResolve);
+            CheckForGameOver();
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// Reduce resolve directly (e.g., when enemies reach the end).
+    /// </summary>
+    public void LoseResolve(int amount)
+    {
+        currentResolve -= amount;
+        if (currentResolve < 0) currentResolve = 0;
+        UpdateUI();
+        OnResolveChanged?.Invoke(currentResolve);
+        CheckForGameOver();
+    }
+
+    void CheckForGameOver()
+    {
+        if (currentResolve <= 0)
+        {
+            if (GameOverManager.Instance != null)
+            {
+                GameOverManager.Instance.TriggerLose();
+            }
+        }
     }
 
     public bool CanAfford(int amount)
