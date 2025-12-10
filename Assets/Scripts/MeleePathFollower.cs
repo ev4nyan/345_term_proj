@@ -190,7 +190,7 @@ public class MeleePathFollower : MonoBehaviour
         // Reached end of path - deal damage
         if (ResolveManager.Instance != null)
         {
-            ResolveManager.Instance.SpendResolve(endOfPathDamage);
+            ResolveManager.Instance.LoseResolve(endOfPathDamage);
             Debug.Log($"Melee enemy reached the end! Lost {endOfPathDamage} resolve.");
         }
         Destroy(gameObject);

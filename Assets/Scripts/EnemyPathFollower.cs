@@ -261,7 +261,7 @@ public class EnemyPathFollower : MonoBehaviour
         // reached the end of the path - deal damage (deduct resolve)
         if (ResolveManager.Instance != null)
         {
-            ResolveManager.Instance.SpendResolve(endOfPathDamage);
+            ResolveManager.Instance.LoseResolve(endOfPathDamage);
             Debug.Log($"Enemy reached the end! Lost {endOfPathDamage} resolve.");
         }
         Destroy(gameObject);

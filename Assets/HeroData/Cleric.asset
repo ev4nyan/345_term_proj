@@ -22,7 +22,7 @@ MonoBehaviour:
   attackDamage: 18
   attackRange: 4
   attackRate: 0.125
-  resolveCost: 120
+  resolveCost: 70
   hasPermadeath: 1
   singlePlacement: 1
   ultimateType: 3
