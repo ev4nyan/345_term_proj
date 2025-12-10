@@ -14,6 +14,10 @@ public class HeroCleric : Hero
     public float healAmount = 15f;
     public float attackAnimDelay = 0.5f;  // Time to wait before firing projectile
     public string heroTag = "Hero";
+    public AudioClip attackClip;
+
+    public AudioClip ultClip;
+    private AudioSource audioSource;
 
     [Header("Ultimate - Mass Resurrection")]
     public GameObject resurrectionEffectPrefab;  // Optional visual effect
@@ -21,6 +25,7 @@ public class HeroCleric : Hero
     protected override void Start()
     {
         base.Start();
+        audioSource = FindFirstObjectByType<Canvas>().GetComponent<AudioSource>();
 
         if (firePoint == null)
             firePoint = transform;
@@ -85,6 +90,7 @@ public class HeroCleric : Hero
         
         if (animator != null)
             animator.SetTrigger("Atk");
+        audioSource.PlayOneShot(attackClip);
 
         // Wait for attack animation
         yield return new WaitForSeconds(attackAnimDelay);
@@ -125,6 +131,7 @@ public class HeroCleric : Hero
     protected override void ExecuteMassResurrection()
     {
         Debug.Log($"{heroData.heroName} casts MASS RESURRECTION!");
+        audioSource.PlayOneShot(ultClip);
 
         // Spawn visual effect if available
         if (resurrectionEffectPrefab != null)

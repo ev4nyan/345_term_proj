@@ -13,6 +13,7 @@ public class HeroKing : Hero
 
     [Header("Ultimate - Dragon Summon")]
     public GameObject friendlyDragonPrefab;  // Assign a dragon prefab that fights for you
+    public AudioClip ultClip;
 
     public AudioClip attackClip;
     private AudioSource audioSource;
@@ -71,6 +72,7 @@ public class HeroKing : Hero
     protected override void ExecuteDragonSummon()
     {
         Debug.Log($"{heroData.heroName} summons a DRAGON!");
+        audioSource.PlayOneShot(ultClip);
 
         if (friendlyDragonPrefab != null)
         {

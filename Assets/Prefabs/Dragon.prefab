@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  moveSpeed: 0.1
+  moveSpeed: 1
   bobAmplitude: 0.5
   bobFrequency: 3
   fireballPrefab: {fileID: 1659373104240289144, guid: f89c8f2de6908428fbad203e1a017cc8, type: 3}
