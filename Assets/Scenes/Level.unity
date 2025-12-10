@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Wave:     / 3'
+  m_text: 'Wave:     / 7'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9b626bad247155644af6385263cc391c, type: 2}
   m_sharedMaterial: {fileID: 2883821926799074886, guid: 9b626bad247155644af6385263cc391c, type: 2}
@@ -11131,7 +11131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fbbb4adf72084ee3ad74322057116ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentResolve: 100
+  currentResolve: 60
   resolvePerKill: 5
   resolveText: {fileID: 1571440644}
   resolveIcon: {fileID: 0}
@@ -12364,12 +12364,76 @@ MonoBehaviour:
     - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
     - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
     - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
-    timeBetweenSpawns: 1
-    delayAfterWave: 1
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    timeBetweenSpawns: 2
+    delayAfterWave: 7
+  - spawnOrder:
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    timeBetweenSpawns: 2
+    delayAfterWave: 7
+  - spawnOrder:
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    timeBetweenSpawns: 4
+    delayAfterWave: 7
+  - spawnOrder:
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    timeBetweenSpawns: 4
+    delayAfterWave: 7
   - spawnOrder:
     - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
-    timeBetweenSpawns: 10
-    delayAfterWave: 1
+    - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    timeBetweenSpawns: 4
+    delayAfterWave: 7
+  - spawnOrder:
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
+    timeBetweenSpawns: 4
+    delayAfterWave: 7
+  - spawnOrder:
+    - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 271635004794845369, guid: 611b7f5db12ee4241981968a2f015870, type: 3}
+    timeBetweenSpawns: 4
+    delayAfterWave: 7
   loop: 0
 --- !u!82 &1483627748
 AudioSource:
@@ -12497,7 +12561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0e7aa65e7b56481bb5c3c687f37190a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDistanceBetweenTowers: 2
+  minDistanceBetweenTowers: 1
   blockingLayers:
     serializedVersion: 2
     m_Bits: 0

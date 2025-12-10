@@ -19,10 +19,10 @@ MonoBehaviour:
   heroPrefab: {fileID: 6608893242850171245, guid: 4532c4ecba8264dd7ae27e264db4334d, type: 3}
   backstory: Marlin the wizard he is the wizard from wizardtown
   maxHealth: 100
-  attackDamage: 20
-  attackRange: 5
+  attackDamage: 12
+  attackRange: 6
   attackRate: 1
-  resolveCost: 50
+  resolveCost: 20
   hasPermadeath: 1
   singlePlacement: 1
   ultimateType: 2

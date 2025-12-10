@@ -18,11 +18,11 @@ MonoBehaviour:
   deadPortrait: {fileID: 0}
   heroPrefab: {fileID: 6962061359043668197, guid: 58396cdde922844ce91c8593f2565e65, type: 3}
   backstory: HE HEALS PEOPLE!
-  maxHealth: 100
-  attackDamage: 20
-  attackRange: 5
-  attackRate: 1
-  resolveCost: 50
+  maxHealth: 120
+  attackDamage: 18
+  attackRange: 4
+  attackRate: 0.5
+  resolveCost: 25
   hasPermadeath: 1
   singlePlacement: 1
   ultimateType: 3

@@ -187,9 +187,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 2324826647206429545, guid: 4bf11e89a42ab4b96b07414cab544840, type: 3}
   firePoint: {fileID: 0}
   projectileSpeed: 10
+  attackClip: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
   fireStormEffectPrefab: {fileID: 2207101102904941048, guid: a1a84ee1acd2642ec81f7a9563e14830, type: 3}
   fireStormTicks: 5
   fireStormTickRate: 0.5
+  ultClip: {fileID: 0}
 --- !u!95 &-6187267452037724106
 Animator:
   serializedVersion: 7
