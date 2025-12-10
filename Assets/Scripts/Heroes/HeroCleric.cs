@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 /// <summary>
 /// Cleric hero - Healer support.
@@ -11,6 +12,7 @@ public class HeroCleric : Hero
     public Transform firePoint;
     public GameObject healProjectilePrefab;
     public float healAmount = 15f;
+    public float attackAnimDelay = 0.5f;  // Time to wait before firing projectile
     public string heroTag = "Hero";
 
     [Header("Ultimate - Mass Resurrection")]
@@ -74,27 +76,39 @@ public class HeroCleric : Hero
     void Heal()
     {
         if (target == null || heroData == null) return;
+        StartCoroutine(HealCoroutine());
+    }
 
+    IEnumerator HealCoroutine()
+    {
+        Transform healTarget = target;
+        
         if (animator != null)
             animator.SetTrigger("Atk");
+
+        // Wait for attack animation
+        yield return new WaitForSeconds(attackAnimDelay);
+
+        // Check target is still valid
+        if (healTarget == null || isDead) yield break;
 
         if (healProjectilePrefab != null)
         {
             // Calculate direction to target
-            Vector2 direction = ((Vector2)target.position - (Vector2)firePoint.position).normalized;
+            Vector2 direction = ((Vector2)healTarget.position - (Vector2)firePoint.position).normalized;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
             GameObject projectile = Instantiate(healProjectilePrefab, firePoint.position, Quaternion.Euler(0, 0, angle));
             HealProjectile healProj = projectile.GetComponent<HealProjectile>();
             if (healProj != null)
             {
-                healProj.Seek(target, healAmount);
+                healProj.Seek(healTarget, healAmount);
             }
         }
         else
         {
             // Direct heal if no projectile
-            HealTarget(target.gameObject);
+            HealTarget(healTarget.gameObject);
         }
     }
 

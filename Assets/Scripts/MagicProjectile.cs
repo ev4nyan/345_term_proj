@@ -30,14 +30,13 @@ public class MagicProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if collider is on the target layer
-        if (((1 << other.gameObject.layer) & targetLayer) != 0)
+        // Check by tag or layer
+        if (other.CompareTag("Enemy") || ((1 << other.gameObject.layer) & targetLayer) != 0)
         {
-        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
             if (enemyHealth != null)
             {
-                enemyHealth.TakeDamage((int)damage);
-                return;
+                enemyHealth.TakeDamage(damage);
             }
 
             Destroy(gameObject);

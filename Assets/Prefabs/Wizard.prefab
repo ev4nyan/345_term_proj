@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7379702099891459010}
   - component: {fileID: 5322429957348492875}
   - component: {fileID: -4477676933167403206}
+  - component: {fileID: -6187267452037724106}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Hero
@@ -189,3 +190,25 @@ MonoBehaviour:
   fireStormEffectPrefab: {fileID: 2207101102904941048, guid: a1a84ee1acd2642ec81f7a9563e14830, type: 3}
   fireStormTicks: 5
   fireStormTickRate: 0.5
+--- !u!95 &-6187267452037724106
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6608893242850171245}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b8e1f1792e18a3442bfa152515582a80, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

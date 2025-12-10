@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5711540657425231034}
   - component: {fileID: 6875015023694532789}
   - component: {fileID: 3994103186457878368}
+  - component: {fileID: 8628404633766443307}
   m_Layer: 0
   m_Name: Cleric
   m_TagString: Hero
@@ -112,6 +113,7 @@ MonoBehaviour:
   firePoint: {fileID: 0}
   healProjectilePrefab: {fileID: 7988424549830927944, guid: b1b636c922c1841d2bcf761c0aa34e57, type: 3}
   healAmount: 15
+  attackAnimDelay: 0.6
   heroTag: Hero
   resurrectionEffectPrefab: {fileID: 0}
 --- !u!60 &3994103186457878368
@@ -210,3 +212,25 @@ PolygonCollider2D:
       - {x: 0.19, y: 0.53}
       - {x: 0.17, y: 0.55}
   m_UseDelaunayMesh: 0
+--- !u!95 &8628404633766443307
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962061359043668197}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 030c061c0b64a4da69e3a36f7c0809ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
