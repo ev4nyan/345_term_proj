@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -13,9 +14,13 @@ public class HeroKing : Hero
     [Header("Ultimate - Dragon Summon")]
     public GameObject friendlyDragonPrefab;  // Assign a dragon prefab that fights for you
 
+    public AudioClip attackClip;
+    private AudioSource audioSource;
+
     protected override void Start()
     {
         base.Start();
+        audioSource = FindFirstObjectByType<Canvas>().GetComponent<AudioSource>();
     }
 
     protected override void Update()
@@ -35,7 +40,10 @@ public class HeroKing : Hero
 
                 // Play attack animation
                 if (animator != null)
+                {
                     animator.SetTrigger("Atk");
+                    audioSource.PlayOneShot(attackClip);
+                }
 
                 // Deal damage to all enemies in range
                 foreach (var hit in hits)

@@ -21,6 +21,9 @@ public class EnemySpawner : MonoBehaviour
     public TMP_Text HealthText;
     public TMP_Text WaveText;
 
+    private AudioSource audioSource;
+    public AudioClip spawnClip;
+
     [Header("Path")]
     public Transform[] pathWaypoints;   // your existing waypoint array
 
@@ -33,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Hold());
+        audioSource = FindFirstObjectByType<Canvas>().GetComponent<AudioSource>();
     }
 
     private IEnumerator SpawnWaves()
@@ -50,6 +54,7 @@ public class EnemySpawner : MonoBehaviour
                     GameObject prefab = wave.spawnOrder[i];
                     if (prefab != null)
                         SpawnEnemy(prefab);
+                    audioSource.PlayOneShot(spawnClip);
 
                     yield return new WaitForSeconds(wave.timeBetweenSpawns);
                 }

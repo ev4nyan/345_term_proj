@@ -20,7 +20,7 @@ MonoBehaviour:
   backstory: He is a king and stuff.
   maxHealth: 1000
   attackDamage: 20
-  attackRange: 8
+  attackRange: 1.6
   attackRate: 0.83
   resolveCost: 50
   hasPermadeath: 0
