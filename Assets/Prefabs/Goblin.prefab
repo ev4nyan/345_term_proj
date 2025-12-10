@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2773742477771008262}
   - component: {fileID: 8289628205611412872}
   - component: {fileID: 8573197914005035139}
+  - component: {fileID: 4308552638905528585}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Enemy
@@ -164,10 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  moveSpeed: 2
+  moveSpeed: 5
   heroDetectionRange: 5
   attackRange: 1.2
-  attackDamage: 10
+  attackDamage: 3
   attackRate: 1
   heroTag: Hero
   endOfPathDamage: 10
@@ -183,5 +184,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c9a00e7efe7c54d9020c7c01fed844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   essenceReward: 5
+  hitClip: {fileID: 0}
+--- !u!95 &4308552638905528585
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5062426274118577077}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c5e25672eec664a3fa58a331030941f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

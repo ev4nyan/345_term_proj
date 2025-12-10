@@ -19,9 +19,9 @@ MonoBehaviour:
   heroPrefab: {fileID: 1411369990217041848, guid: d307c730289e04b1faff56266700be69, type: 3}
   backstory: 
   maxHealth: 300
-  attackDamage: 1
-  attackRange: 1.6
-  attackRate: 1
+  attackDamage: 0.1
+  attackRange: 1.2
+  attackRate: 3
   resolveCost: 50
   hasPermadeath: 1
   singlePlacement: 1

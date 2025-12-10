@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8067173368741029870}
   - component: {fileID: 1351325010649910368}
   - component: {fileID: 842159675142700133}
+  - component: {fileID: 2826511372776039131}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -173,11 +174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  moveSpeed: 2
+  moveSpeed: 0.7
   heroDetectionRange: 5
   attackRange: 1.2
-  attackDamage: 10
-  attackRate: 1
+  attackDamage: 20
+  attackRate: 0.2
   heroTag: Hero
   endOfPathDamage: 10
 --- !u!114 &842159675142700133
@@ -194,3 +195,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   essenceReward: 5
+  hitClip: {fileID: 0}
+--- !u!95 &2826511372776039131
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4876877959009434106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b5c0919e37a0b4e69baffe5ef3da239d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
