@@ -164,13 +164,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waypoints: []
-  moveSpeed: 2
+  moveSpeed: 3
   heroDetectionRange: 5
   attackRange: 1.2
-  attackDamage: 10
+  attackDamage: 18
   attackRate: 1
   heroTag: Hero
-  endOfPathDamage: 10
+  endOfPathDamage: 30
 --- !u!114 &8573197914005035139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,5 +183,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c9a00e7efe7c54d9020c7c01fed844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 60
   essenceReward: 5
+  hitClip: {fileID: 0}

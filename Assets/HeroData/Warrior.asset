@@ -18,11 +18,11 @@ MonoBehaviour:
   deadPortrait: {fileID: 0}
   heroPrefab: {fileID: 1411369990217041848, guid: d307c730289e04b1faff56266700be69, type: 3}
   backstory: 
-  maxHealth: 300
-  attackDamage: 1
+  maxHealth: 150
+  attackDamage: 14
   attackRange: 1.6
   attackRate: 1
-  resolveCost: 50
+  resolveCost: 30
   hasPermadeath: 1
   singlePlacement: 1
   ultimateType: 1
