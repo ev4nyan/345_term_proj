@@ -613,6 +613,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   deployedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   fallenColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  grid: {fileID: 0}
 --- !u!114 &184099534
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1314,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   deployedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   fallenColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  grid: {fileID: 0}
 --- !u!114 &559960133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,12 +1551,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1825553985}
   - {fileID: 768403527}
   - {fileID: 1560630917}
   - {fileID: 1307381263}
   - {fileID: 132054255}
   - {fileID: 1719716101}
+  - {fileID: 1825553985}
   - {fileID: 27704358}
   m_Father: {fileID: 1450277570}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9761,6 +9763,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   deployedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   fallenColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  grid: {fileID: 0}
 --- !u!1 &933254498
 GameObject:
   m_ObjectHideFlags: 0
@@ -10097,6 +10100,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   deployedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   fallenColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  grid: {fileID: 0}
 --- !u!114 &1094490240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11308,7 +11312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KingdomHP: 100
   HealthText: {fileID: 1489736337}
-  WaveText: {fileID: 300452191}
+  WaveText: {fileID: 1312721226}
   pathWaypoints:
   - {fileID: 407453827}
   - {fileID: 1244505499}
@@ -11322,6 +11326,19 @@ MonoBehaviour:
   - {fileID: 1194817979}
   - {fileID: 1792551737}
   waves:
+  - spawnOrder:
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    - {fileID: 4876877959009434106, guid: 216b077d1df6942639086987dd644b2c, type: 3}
+    - {fileID: 5062426274118577077, guid: cd96cd221020d487abe275910a629561, type: 3}
+    timeBetweenSpawns: 2
+    delayAfterWave: 1
   - spawnOrder:
     - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
     - {fileID: 865640236360988016, guid: 3e3014e1ff8d5ee42b4465ef83df5706, type: 3}
@@ -12349,6 +12366,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allHeroes:
   - {fileID: 11400000, guid: 3b106f86ea88c44ca98f9c7e374b9859, type: 2}
+  - {fileID: 11400000, guid: 8cabc94e51d8d42e3b39827610524fac, type: 2}
+  - {fileID: 11400000, guid: ec9c00a914d2f4ab19e518334c5d625f, type: 2}
+  - {fileID: 11400000, guid: b1722eb5eceec4400bd03cb1926c62b1, type: 2}
   availableHeroes: []
   deployedHeroes: []
   fallenHeroes: []
@@ -12605,6 +12625,7 @@ MonoBehaviour:
   normalColor: {r: 1, g: 1, b: 1, a: 1}
   deployedColor: {r: 0.7, g: 0.7, b: 0.7, a: 1}
   fallenColor: {r: 0.3, g: 0.3, b: 0.3, a: 1}
+  grid: {fileID: 0}
 --- !u!114 &1825553987
 MonoBehaviour:
   m_ObjectHideFlags: 0

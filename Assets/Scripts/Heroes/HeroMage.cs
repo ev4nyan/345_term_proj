@@ -2,18 +2,15 @@ using UnityEngine;
 using System.Collections;
 
 /// <summary>
-/// Mage hero - Cone attacks like FlamethrowerTower.
+/// Mage hero - Fires projectiles at enemies.
 /// Ultimate: Devastating fire storm that damages all enemies in a large area.
 /// </summary>
 public class HeroMage : Hero
 {
-    [Header("Mage Cone Attack")]
-    public float coneAngle = 45f;          // Half-angle of the cone
-    public Vector2 attackOffset;
-
-    [Header("Visual")]
-    public Color coneGizmoColor = new Color(0.5f, 0f, 1f, 0.3f); // Purple
-    public Color coneOutlineColor = Color.magenta;
+    [Header("Mage Projectile Attack")]
+    public GameObject projectilePrefab;    // Assign a fireball/magic projectile prefab
+    public Transform firePoint;            // Where projectiles spawn from
+    public float projectileSpeed = 10f;
 
     [Header("Ultimate - Fire Storm")]
     public GameObject fireStormEffectPrefab;  // Optional visual effect
@@ -31,10 +28,10 @@ public class HeroMage : Hero
         base.Update();
         if (isDead) return;
 
-        // Attack all enemies in cone
-        if (Time.time >= nextAttackTime)
+        // Fire projectile at target
+        if (target != null && Time.time >= nextAttackTime)
         {
-            AttackEnemiesInCone();
+            FireProjectile();
             nextAttackTime = Time.time + (1f / heroData.attackRate);
         }
     }
@@ -60,45 +57,44 @@ public class HeroMage : Hero
         target = nearestEnemy != null ? nearestEnemy.transform : null;
     }
 
-    void AttackEnemiesInCone()
+    void FireProjectile()
     {
-        Vector2 origin = (Vector2)transform.position + GetAttackOffset();
+        if (target == null) return;
 
-        // Forward direction based on facing
-        Vector2 forwardDir = facingRight ? Vector2.right : Vector2.left;
+        // Play attack animation
+        if (animator != null)
+            animator.SetTrigger("Atk");
 
-        // Find all enemies in range
-        Collider2D[] hits = Physics2D.OverlapCircleAll(origin, heroData.attackRange, enemyLayer);
+        // Determine spawn position
+        Vector3 spawnPos = firePoint != null ? firePoint.position : transform.position;
 
-        bool hitAny = false;
-
-        foreach (var hit in hits)
+        if (projectilePrefab != null)
         {
-            Vector2 dirToEnemy = ((Vector2)hit.transform.position - origin).normalized;
-            float angleToEnemy = Vector2.Angle(forwardDir, dirToEnemy);
-
-            // Check if enemy is within the cone angle
-            if (angleToEnemy <= coneAngle)
+            GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+            
+            // Try Fireball component (homing)
+            Fireball fireball = proj.GetComponent<Fireball>();
+            if (fireball != null)
             {
-                hitAny = true;
-                DealDamageToTarget(hit.gameObject, heroData.attackDamage);
+                fireball.speed = projectileSpeed;
+                fireball.Seek(target, heroData.attackDamage);
+                return;
+            }
 
-                // Track target for flipping
-                if (target == null)
-                    target = hit.transform;
+            // Try MagicProjectile component (directional)
+            MagicProjectile magicProj = proj.GetComponent<MagicProjectile>();
+            if (magicProj != null)
+            {
+                Vector2 dir = (target.position - spawnPos).normalized;
+                magicProj.speed = projectileSpeed;
+                magicProj.Init(dir, (int)heroData.attackDamage, enemyLayer);
             }
         }
-
-        // Trigger attack animation if we hit something
-        if (hitAny && animator != null)
+        else
         {
-            animator.SetTrigger("Atk");
+            // Fallback: direct damage if no prefab assigned
+            DealDamageToTarget(target.gameObject, heroData.attackDamage);
         }
-    }
-
-    Vector2 GetAttackOffset()
-    {
-        return new Vector2(facingRight ? attackOffset.x : -attackOffset.x, attackOffset.y);
     }
 
     protected override void ExecuteFireStorm()
@@ -137,43 +133,9 @@ public class HeroMage : Hero
     {
         if (heroData == null) return;
 
-        Vector2 origin = (Vector2)transform.position + GetAttackOffset();
-        Vector2 forwardDir = facingRight ? Vector2.right : Vector2.left;
-
-        // Draw cone outline
-        Gizmos.color = coneOutlineColor;
-
-        // Calculate cone edges
-        float baseAngle = facingRight ? 0f : 180f;
-        float leftAngle = baseAngle + coneAngle;
-        float rightAngle = baseAngle - coneAngle;
-
-        Vector2 leftDir = new Vector2(Mathf.Cos(leftAngle * Mathf.Deg2Rad), Mathf.Sin(leftAngle * Mathf.Deg2Rad));
-        Vector2 rightDir = new Vector2(Mathf.Cos(rightAngle * Mathf.Deg2Rad), Mathf.Sin(rightAngle * Mathf.Deg2Rad));
-
-        Vector3 leftEnd = (Vector3)(origin + leftDir * heroData.attackRange);
-        Vector3 rightEnd = (Vector3)(origin + rightDir * heroData.attackRange);
-        Vector3 originV3 = (Vector3)origin;
-
-        // Draw the two edge lines
-        Gizmos.DrawLine(originV3, leftEnd);
-        Gizmos.DrawLine(originV3, rightEnd);
-
-        // Draw arc segments
-        int segments = 20;
-        float angleStep = (coneAngle * 2f) / segments;
-        float startAngle = rightAngle;
-
-        for (int i = 0; i < segments; i++)
-        {
-            float a1 = (startAngle + angleStep * i) * Mathf.Deg2Rad;
-            float a2 = (startAngle + angleStep * (i + 1)) * Mathf.Deg2Rad;
-
-            Vector3 p1 = originV3 + new Vector3(Mathf.Cos(a1), Mathf.Sin(a1), 0) * heroData.attackRange;
-            Vector3 p2 = originV3 + new Vector3(Mathf.Cos(a2), Mathf.Sin(a2), 0) * heroData.attackRange;
-
-            Gizmos.DrawLine(p1, p2);
-        }
+        // Draw attack range
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, heroData.attackRange);
 
         // Draw ultimate range
         Gizmos.color = Color.red;

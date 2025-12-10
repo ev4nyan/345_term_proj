@@ -73,13 +73,12 @@ public class EnemySpawner : MonoBehaviour
         if (jumper != null)
             jumper.waypoints = pathWaypoints;
 
-        var shooter = enemy.GetComponent<EnemyWizardPathShooter>();
-        if (shooter != null)
-            shooter.waypoints = pathWaypoints;
-
         var dragon = enemy.GetComponent<DragonPathFollower>();
         if (dragon != null)
             dragon.waypoints = pathWaypoints;
+        var melee = enemy.GetComponent<MeleePathFollower>();
+        if (melee != null)
+            melee.waypoints = pathWaypoints;
     }
 
     public void UpdateHealth(int damage)

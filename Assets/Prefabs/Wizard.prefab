@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7008412969330441016, guid: d6b8c791d8089b44a9a8c5a7423bd180, type: 3}
+  m_Sprite: {fileID: 4723107735738678597, guid: 6fc66c021eec74942b4e71a3fde4dc04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -183,7 +183,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   spriteRenderer: {fileID: 6494866715391367109}
-  coneAngle: 180
-  attackOffset: {x: 0, y: 0}
-  coneGizmoColor: {r: 0.5, g: 0, b: 1, a: 0.3}
-  coneOutlineColor: {r: 1, g: 0, b: 1, a: 1}
+  projectilePrefab: {fileID: 2324826647206429545, guid: 4bf11e89a42ab4b96b07414cab544840, type: 3}
+  firePoint: {fileID: 0}
+  projectileSpeed: 10
+  fireStormEffectPrefab: {fileID: 2207101102904941048, guid: a1a84ee1acd2642ec81f7a9563e14830, type: 3}
+  fireStormTicks: 5
+  fireStormTickRate: 0.5

@@ -23,8 +23,8 @@ MonoBehaviour:
   attackRange: 5
   attackRate: 1
   resolveCost: 50
-  hasPermadeath: 0
-  singlePlacement: 0
+  hasPermadeath: 1
+  singlePlacement: 1
   ultimateType: 2
   ultimateName: Final Stand
   ultimateDescription: 

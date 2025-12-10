@@ -24,8 +24,8 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            if (EssenceManager.Instance != null)
-                EssenceManager.Instance.Add(essenceReward);
+            if (ResolveManager.Instance != null)
+                ResolveManager.Instance.AddResolve(essenceReward);
             OnEnemyDied?.Invoke();
             // optional: play death animation, then destroy
             // if (animator != null) animator.SetTrigger("Die");

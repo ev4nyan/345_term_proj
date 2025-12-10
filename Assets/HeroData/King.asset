@@ -18,13 +18,13 @@ MonoBehaviour:
   deadPortrait: {fileID: 0}
   heroPrefab: {fileID: 3648382972877483802, guid: 8f8c744ac96e94afa959f0d5a581dc30, type: 3}
   backstory: He is a king and stuff.
-  maxHealth: 1000
-  attackDamage: 20
-  attackRange: 8
+  maxHealth: 200
+  attackDamage: 5
+  attackRange: 1.6
   attackRate: 0.83
   resolveCost: 50
-  hasPermadeath: 0
-  singlePlacement: 0
+  hasPermadeath: 1
+  singlePlacement: 1
   ultimateType: 0
   ultimateName: Final Stand
   ultimateDescription: 

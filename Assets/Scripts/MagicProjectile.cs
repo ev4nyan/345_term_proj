@@ -16,6 +16,10 @@ public class MagicProjectile : MonoBehaviour
         damage = dmg;
         targetLayer = layer;
 
+        // Rotate to face direction (sprite faces up, so subtract 90 degrees)
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle - 90f);
+
         Destroy(gameObject, lifeTime);
     }
 
@@ -29,10 +33,11 @@ public class MagicProjectile : MonoBehaviour
         // Check if collider is on the target layer
         if (((1 << other.gameObject.layer) & targetLayer) != 0)
         {
-            IDamageable dmg = other.GetComponent<IDamageable>();
-            if (dmg != null)
+        EnemyHealth enemyHealth = other.GetComponent<EnemyHealth>();
+            if (enemyHealth != null)
             {
-                dmg.TakeDamage(damage);
+                enemyHealth.TakeDamage((int)damage);
+                return;
             }
 
             Destroy(gameObject);
